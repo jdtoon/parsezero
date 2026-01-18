@@ -106,15 +106,22 @@ ParseZero achieves zero allocation by:
 
 ### Benchmark Results
 
-```
-| Method              | Mean     | Allocated |
-|---------------------|----------|-----------|
-| ParseZero           | 45.2 ms  | 0 B       |
-| CsvHelper           | 312.5 ms | 1.2 GB    |
-| Sylvan.Data.Csv     | 52.1 ms  | 48 KB     |
-```
+Parsing 100,000 rows (10 columns each) on .NET 8.0 with AVX2:
 
-*Benchmark: 1M rows, 10 columns, .NET 8, Release build*
+| Method | Mean | Allocated | Alloc Ratio |
+|--------|------|-----------|-------------|
+| **ParseZero (ForEach)** | **22.1 ms** | **2.9 MB** | **0.27x** |
+| ParseZero (File) | 23.1 ms | 2.9 MB | 0.27x |
+| Sylvan.Data.Csv (File) | 25.8 ms | 4.3 MB | 0.42x |
+| Sylvan.Data.Csv (Stream) | 38.6 ms | 15.4 MB | 1.51x |
+| ParseZero (Stream) | 67.4 ms | 10.2 MB | 1.00x (baseline) |
+
+**Key takeaways:**
+- ParseZero's file-based parsing is **10% faster** than Sylvan with **33% less memory**
+- The `FieldCountOnly` mode achieves near-zero allocation (**280 bytes** for 100K rows)
+- SIMD-accelerated delimiter scanning on .NET 8+ provides additional throughput
+
+*Benchmark: BenchmarkDotNet, Intel Core i7-10870H, .NET 8.0, Release build*
 
 ## Supported Encodings
 
