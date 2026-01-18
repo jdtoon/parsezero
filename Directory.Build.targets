@@ -1,0 +1,17 @@
+<Project>
+  <!-- InternalsVisibleTo for test projects -->
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'ParseZero'">
+    <InternalsVisibleTo Include="ParseZero.Tests" />
+    <InternalsVisibleTo Include="ParseZero.Benchmarks" />
+  </ItemGroup>
+
+  <!-- Include README in NuGet package -->
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Source Link -->
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
