@@ -15,8 +15,8 @@
     <Product>ParseZero</Product>
     <Copyright>Copyright © 2026 ParseZero Contributors</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/parsezero/parsezero</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/parsezero/parsezero.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jdtoon/parsezero</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jdtoon/parsezero.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>csv;parser;zero-allocation;high-performance;span;simd;etl</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
