@@ -17,6 +17,12 @@ public class Program
         SchemaMapping();
         DataReaderExample();
 
+        Console.WriteLine("\n--- Extended Samples ---\n");
+
+        FileBasedSample.Run();
+        EncodingDetectionSample.Run();
+        SqlBulkCopySample.Run();
+
         Console.WriteLine("\nAll samples completed!");
     }
 
